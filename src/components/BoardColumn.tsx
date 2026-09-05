@@ -1,9 +1,16 @@
+import type { ReactNode } from "react";
+
 type BoardColumnProps = {
   title: string;
   number: string;
+  children?: ReactNode;
 };
 
-export function BoardColumn({ title, number }: BoardColumnProps) {
+export function BoardColumn({
+  title,
+  number,
+  children,
+}: BoardColumnProps) {
   return (
     <section className="board-column">
       <header className="column-header">
@@ -15,7 +22,7 @@ export function BoardColumn({ title, number }: BoardColumnProps) {
       </header>
 
       <div className="column-content">
-        <p className="empty-column">Sin tareas</p>
+        {children ?? <p className="empty-column">Sin tareas</p>}
       </div>
     </section>
   );
