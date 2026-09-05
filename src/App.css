@@ -194,3 +194,64 @@
   letter-spacing: 0.14em;
   text-transform: uppercase;
 }
+
+
+.task-card {
+  width: 100%;
+  display: block;
+  margin: 0 0 16px;
+  padding: 18px;
+
+  color: var(--ink);
+  background: #ffffff;
+  border: 1px solid var(--ink);
+  border-radius: 2px;
+
+  font-family: inherit;
+  text-align: left;
+  cursor: pointer;
+
+  transition:
+    transform 160ms ease,
+    box-shadow 160ms ease;
+}
+
+.task-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0 rgb(159 0 31 / 14%);
+}
+
+.task-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+.task-card--selected {
+  padding-left: 15px;
+  border-left: 4px solid var(--accent);
+}
+
+.task-card h3 {
+  margin: 0 0 10px;
+  font-family: var(--display-font);
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+
+.task-card p {
+  margin: 0;
+  color: var(--muted-text);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.task-card-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 22px;
+
+  color: var(--ink);
+  font-size: 0.7rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
