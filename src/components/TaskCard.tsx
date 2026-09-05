@@ -1,9 +1,17 @@
+import type { TaskStatus } from "../types/tasks";
+
 type TaskCardProps = {
   title: string;
   description: string;
   points: number;
-  status: string;
+  status: TaskStatus;
   selected?: boolean;
+};
+
+const statusLabels: Record<TaskStatus, string> = {
+  pending: "Pendiente",
+  "in-progress": "En progreso",
+  done: "Terminada",
 };
 
 export function TaskCard({
@@ -28,7 +36,7 @@ export function TaskCard({
 
       <footer className="task-card-footer">
         <span>{points} PT</span>
-        <span>{status}</span>
+        <span>{statusLabels[status]}</span>
       </footer>
     </button>
   );

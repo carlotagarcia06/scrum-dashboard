@@ -2,8 +2,33 @@ import "./App.css";
 import { TopBar } from "./components/TopBar";
 import { BoardColumn } from "./components/BoardColumn";
 import { TaskCard } from "./components/TaskCard";
+import { initialTasks } from "./data/tasks";
+import type { SprintId } from "./types/tasks";
 
 function App() {
+  function renderTasks(sprintId: SprintId) {
+    const tasksForSprint = initialTasks
+      .filter((task) => task.sprintId === sprintId)
+      .sort((firstTask, secondTask) => {
+        return firstTask.position - secondTask.position;
+      });
+
+    if (tasksForSprint.length === 0) {
+      return null;
+    }
+
+    return tasksForSprint.map((task) => (
+      <TaskCard
+        key={task.id}
+        title={task.title}
+        description={task.description}
+        points={task.points}
+        status={task.status}
+        selected={task.id === "task-01"}
+      />
+    ));
+  }
+
   return (
     <div className="app-shell">
       <TopBar />
@@ -17,33 +42,20 @@ function App() {
         <div className="board-scroll">
           <div className="board">
             <BoardColumn title="Backlog" number="">
-              <TaskCard
-                title="Definir historias de usuario"
-                description="Documentar las necesidades principales del proyecto."
-                points={5}
-                status="Pendiente"
-                selected
-              />
-
-              <TaskCard
-                title="Configurar repositorio"
-                description="Preparar GitHub y el flujo de ramas."
-                points={3}
-                status="Terminada"
-              />
+              {renderTasks(null)}
             </BoardColumn>
 
             <BoardColumn title="Sprint" number="01">
-              <TaskCard
-                title="Crear estructura principal"
-                description="Construir la barra superior y el tablero."
-                points={5}
-                status="En progreso"
-              />
+              {renderTasks("sprint-01")}
             </BoardColumn>
 
-            <BoardColumn title="Sprint" number="02" />
-            <BoardColumn title="Sprint" number="03" />
+            <BoardColumn title="Sprint" number="02">
+              {renderTasks("sprint-02")}
+            </BoardColumn>
+
+            <BoardColumn title="Sprint" number="03">
+              {renderTasks("sprint-03")}
+            </BoardColumn>
           </div>
         </div>
       </main>
