@@ -1,36 +1,53 @@
 import "./App.css";
+import { TopBar } from "./components/TopBar";
+import { BoardColumn } from "./components/BoardColumn";
+import { TaskCard } from "./components/TaskCard";
 
 function App() {
   return (
-    <main className="dashboard">
-      <header className="dashboard-header">
-        <p className="eyebrow">Sprint activo</p>
-        <h1>Scrum Dashboard</h1>
-        <p>Consulta el progreso y la carga de trabajo del equipo.</p>
-      </header>
+    <div className="app-shell">
+      <TopBar />
 
-      <section className="metrics-grid">
-        <article className="metric-card">
-          <span>Tareas completadas</span>
-          <strong>18</strong>
-        </article>
+      <main className="workspace">
+        <header className="workspace-heading">
+          <p className="section-label">Proyecto Scrum</p>
+          <h1>Planificación de sprints</h1>
+        </header>
 
-        <article className="metric-card">
-          <span>Puntos pendientes</span>
-          <strong>24</strong>
-        </article>
+        <div className="board-scroll">
+          <div className="board">
+            <BoardColumn title="Backlog" number="">
+              <TaskCard
+                title="Definir historias de usuario"
+                description="Documentar las necesidades principales del proyecto."
+                points={5}
+                status="Pendiente"
+                selected
+              />
 
-        <article className="metric-card">
-          <span>Velocidad del equipo</span>
-          <strong>42</strong>
-        </article>
+              <TaskCard
+                title="Configurar repositorio"
+                description="Preparar GitHub y el flujo de ramas."
+                points={3}
+                status="Terminada"
+              />
+            </BoardColumn>
 
-        <article className="metric-card">
-          <span>Bloqueos activos</span>
-          <strong>2</strong>
-        </article>
-      </section>
-    </main>
+            <BoardColumn title="Sprint" number="01">
+              <TaskCard
+                title="Crear estructura principal"
+                description="Construir la barra superior y el tablero."
+                points={5}
+                status="En progreso"
+              />
+            </BoardColumn>
+
+            <BoardColumn title="Sprint" number="02" />
+            <BoardColumn title="Sprint" number="03" />
+          </div>
+        </div>
+      </main>
+    </div>
   );
 }
 
