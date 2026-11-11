@@ -10,7 +10,17 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@ant-design/icons": "^6.3.4",
+    "@ant-design/pro-components": "^2.6.4",
+    "@plasmicapp/cli": "^0.1.385",
+    "@plasmicapp/react-web": "^1.0.43",
+    "@plasmicpkgs/antd5": "^0.0.381",
+    "@plasmicpkgs/plasmic-basic-components": "^0.0.294",
+    "@plasmicpkgs/plasmic-rich-components": "^1.0.277",
+    "@plasmicpkgs/react-chartjs-2": "^1.0.174",
+    "chart.js": "^4.6.1",
     "react": "^19.2.8",
+    "react-chartjs-2": "^5.3.1",
     "react-dom": "^19.2.8"
   },
   "devDependencies": {
