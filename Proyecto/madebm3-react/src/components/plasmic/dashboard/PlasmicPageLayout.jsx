@@ -75,7 +75,12 @@ function PlasmicPageLayout__RenderFunc(props) {
       fixSiderbar={false}
       layout={"side"}
       logoElement={
-        <Icon5Icon className={classNames("all", sty.svg__tbm8P)} role={"img"} />
+        <Icon5Icon
+          data-plasmic-name={"m3LogoSvg"}
+          data-plasmic-override={overrides.m3LogoSvg}
+          className={classNames("all", sty.m3LogoSvg)}
+          role={"img"}
+        />
       }
       navMenuItems={(() => {
         const __composite = [
@@ -112,7 +117,9 @@ function PlasmicPageLayout__RenderFunc(props) {
             {$ctx => (
               <div className={classNames("all", sty.freeBox__rNtB)}>
                 <IconIcon
-                  className={classNames("all", sty.svg__t3Oe)}
+                  data-plasmic-name={"svg"}
+                  data-plasmic-override={overrides.svg}
+                  className={classNames("all", sty.svg)}
                   role={"img"}
                 />
               </div>
@@ -162,8 +169,10 @@ function PlasmicPageLayout__RenderFunc(props) {
 }
 
 const PlasmicDescendants = {
-  root: ["root", "loadingBoundary"],
-  loadingBoundary: ["loadingBoundary"]
+  root: ["root", "loadingBoundary", "svg", "m3LogoSvg"],
+  loadingBoundary: ["loadingBoundary", "svg"],
+  svg: ["svg"],
+  m3LogoSvg: ["m3LogoSvg"]
 };
 
 function makeNodeComponent(nodeName) {
@@ -199,6 +208,8 @@ export const PlasmicPageLayout = Object.assign(
   {
     // Helper components rendering sub-elements
     loadingBoundary: makeNodeComponent("loadingBoundary"),
+    svg: makeNodeComponent("svg"),
+    m3LogoSvg: makeNodeComponent("m3LogoSvg"),
     // Metadata about props expected for PlasmicPageLayout
     internalVariantProps: PlasmicPageLayout__VariantProps,
     internalArgProps: PlasmicPageLayout__ArgProps
